@@ -300,9 +300,11 @@ public:
     TextContent()
     {
         fallbackFonts.clear();
+#ifdef RIVE_USING_HAFBUZZ_FONTS
         HBFont::gFallbackProc = pickFallbackFont;
         auto truns = this->make_truns(ViewerContent::DecodeFont);
         m_paragraphs = truns[0].font->shapeText(m_unichars, truns);
+#endif
 
         m_xform = rive::Mat2D::fromTranslate(10, 0) * rive::Mat2D::fromScale(3, 3);
     }

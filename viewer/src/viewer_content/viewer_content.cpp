@@ -67,8 +67,10 @@ void ViewerContent::DumpCounters(const char label[])
 
 rive::Factory* ViewerContent::RiveFactory() { return ViewerHost::Factory(); }
 
+#ifdef RIVE_USING_HAFBUZZ_FONTS
 #include "rive/text/font_hb.hpp"
 rive::rcp<rive::Font> ViewerContent::DecodeFont(rive::Span<const uint8_t> span)
 {
     return HBFont::Decode(span);
 }
+#endif
